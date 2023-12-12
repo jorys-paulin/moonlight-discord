@@ -98,6 +98,10 @@ export default {
 				if (commandName === 'Cheese') {
 					return messageResponse({ content: ':cheese:' });
 				}
+				// Bob l'éponge
+				if (commandName === "Bob l'éponge") {
+					return messageResponse({ content: 'https://fr-academic.com/pictures/frwiki/66/Bob_l%27%C3%A9ponge.jpg' });
+				}
 
 				return errorResponse('Unknown Command');
 			}
