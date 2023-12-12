@@ -88,7 +88,11 @@ export default {
 
 				// Duplicate message
 				if (commandName === 'Duplicate message') {
-					return messageResponse({ content: "Please don't post your message in multiple channels" });
+					// Grab the target message's author
+					const target_id = interaction.data.target_id;
+					const target_message = interaction.data.resolved.messages[target_id];
+
+					return messageResponse({ content: `<@${target_message.author.id}> Please don't post your message in multiple channels` });
 				}
 				// Cheese
 				if (commandName === 'Cheese') {
