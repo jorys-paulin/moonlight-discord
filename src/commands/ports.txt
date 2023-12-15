@@ -1,0 +1,14 @@
+__**Automatically:**__
+Make sure you have UPnP enabled in the router settings.
+**For Sunshine:** open the WebUI - Configuration - General: set UPnP to enabled.
+**For GFE:** you need to use <https://github.com/moonlight-stream/Internet-Streaming-Helper/releases>
+
+__**Manually:**__
+These are the ports you need to forward for Moonlight to work over the internet:
+```TCP: 47984, 47989, 48010
+UDP: 47998, 47999, 48000, 48002, 48010```
+More info here: <https://github.com/moonlight-stream/moonlight-docs/wiki/Setup-Guide#manual-port-forwarding-advanced>
+
+__**Notes:**__
+Only 47989 and 47984 will show as open on <https://www.canyouseeme.org> all the time, others will open when the stream is active.
+If you want a specific guide for your router, see if you can find it here: <https://portforward.com/router.htm>

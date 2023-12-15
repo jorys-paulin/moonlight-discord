@@ -1,0 +1,3 @@
+For those unsolvable networking issues, there's always ZeroTier: <https://github.com/moonlight-stream/moonlight-docs/wiki/Setup-Guide#zerotier>
+
+Following that guide, you will essentially create a tunnel between your host and client through which streaming should work. It usually has a minimal latency penalty, and it gets rid of port forwarding problems.

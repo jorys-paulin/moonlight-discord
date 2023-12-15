@@ -4,6 +4,18 @@
 
 import { InteractionResponseType, InteractionType, verifyKey } from 'discord-interactions';
 
+// Commands
+// @ts-expect-error
+import ports from './commands/ports.txt';
+// @ts-expect-error
+import sunshine from './commands/sunshine.txt';
+// @ts-expect-error
+import gfeserverinfo from './commands/gfeserverinfo.txt';
+// @ts-expect-error
+import scripts from './commands/scripts.txt';
+// @ts-expect-error
+import zerotier from './commands/zerotier.txt';
+
 export interface Env {
 	// Discord application ID
 	DISCORD_APPLICATION_ID: string;
@@ -83,6 +95,36 @@ export default {
 				if (commandName === 'shortcuts') {
 					return messageResponse({
 						content: 'https://github.com/moonlight-stream/moonlight-docs/wiki/Setup-Guide#keyboardmousegamepad-input-options',
+					});
+				}
+				// Ports
+				if (commandName === 'ports') {
+					return messageResponse({
+						content: ports,
+					});
+				}
+				// Sunshine
+				if (commandName === 'sunshine') {
+					return messageResponse({
+						content: sunshine,
+					});
+				}
+				// GFE server info
+				if (commandName === 'gfeserverinfo') {
+					return messageResponse({
+						content: gfeserverinfo,
+					});
+				}
+				// Scripts
+				if (commandName === 'scripts') {
+					return messageResponse({
+						content: scripts,
+					});
+				}
+				// ZeroTier
+				if (commandName === 'zerotier') {
+					return messageResponse({
+						content: zerotier,
 					});
 				}
 
