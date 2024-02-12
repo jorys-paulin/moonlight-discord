@@ -89,7 +89,7 @@ export default {
 				}
 				// Gamepad tester
 				if (commandName === 'gamepadtester') {
-					return messageResponse({ content: 'https://gamepad-tester.com/' });
+					return messageResponse({ content: 'Please open this on your host **while** being connected with Moonlight:\nhttps://gamepad-tester.com/' });
 				}
 				// Shortcuts
 				if (commandName === 'shortcuts') {
