@@ -69,7 +69,7 @@ export default {
 					return messageResponse({ content: 'https://github.com/moonlight-stream/moonlight-docs/wiki' });
 				}
 				// Setup guide
-				if (commandName === 'setup-guide') {
+				if (commandName === 'setup') {
 					const allowedSections = [
 						'quick-setup-instructions',
 						'streaming-over-the-internet',
@@ -81,7 +81,7 @@ export default {
 					];
 
 					// Link directly to a section
-					if (interaction.data.options[0]) {
+					if (interaction.data.options && interaction.data.options[0]) {
 						const section = interaction.data.options[0].value;
 
 						// Only allow sections in list
