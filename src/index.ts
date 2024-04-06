@@ -27,21 +27,9 @@ export interface Env {
 	DISCORD_TOKEN: string;
 }
 
-// Returns a JSON reponse
-function createJsonResponse(value: any) {
-	return new Response(JSON.stringify(value), { headers: { 'Content-Type': 'application/json;charset=UTF-8' } });
-}
-
-// Returns an error as JSON
-function errorResponse(error: string) {
-	return new Response(JSON.stringify({ error }), { status: 400, headers: { 'Content-Type': 'application/json;charset=UTF-8' } });
-}
-
 // Returns a Discord message
 function messageResponse(message: { content: string }) {
-	return new Response(JSON.stringify({ type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE, data: message }), {
-		headers: { 'Content-Type': 'application/json;charset=UTF-8' },
-	});
+	return Response.json({ type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE, data: message });
 }
 
 export default {
@@ -61,14 +49,15 @@ export default {
 
 			// Check signature
 			if (!signature || !timestamp || !verifyKey(body, signature, timestamp, env.DISCORD_PUBLIC_KEY)) {
-				return new Response('Baq Request Signature', { status: 401 });
+				return new Response('Bad Request Signature', { status: 401 });
 			}
 
+			// Parse the interaction payload
 			const interaction = JSON.parse(body);
 
 			// Ping
 			if (interaction.type === InteractionType.PING) {
-				return createJsonResponse({ type: InteractionResponseType.PONG });
+				return Response.json({ type: InteractionResponseType.PONG });
 			}
 
 			// Application commands
@@ -89,7 +78,9 @@ export default {
 				}
 				// Gamepad tester
 				if (commandName === 'gamepadtester') {
-					return messageResponse({ content: 'Please open this on your host **while** being connected with Moonlight:\nhttps://gamepad-tester.com/' });
+					return messageResponse({
+						content: 'Please open this on your host **while** being connected with Moonlight:\nhttps://gamepad-tester.com/',
+					});
 				}
 				// Shortcuts
 				if (commandName === 'shortcuts') {
@@ -145,10 +136,10 @@ export default {
 					return messageResponse({ content: 'https://fr-academic.com/pictures/frwiki/66/Bob_l%27%C3%A9ponge.jpg' });
 				}
 
-				return errorResponse('Unknown Command');
+				return Response.json({ error: 'Unknown Command' }, { status: 400 });
 			}
 
-			return errorResponse('Unknown Type');
+			return Response.json({ error: 'Unknown Interaction Type' }, { status: 400 });
 		}
 
 		// Default route
