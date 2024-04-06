@@ -1,6 +1,6 @@
 name = "moonlight-discord"
 main = "src/index.ts"
-compatibility_date = "2023-11-21"
+compatibility_date = "2024-04-05"
 
 [vars]
 DISCORD_APPLICATION_ID = "469805086290477057"
