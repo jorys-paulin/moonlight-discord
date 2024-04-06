@@ -69,7 +69,29 @@ export default {
 					return messageResponse({ content: 'https://github.com/moonlight-stream/moonlight-docs/wiki' });
 				}
 				// Setup guide
-				if (commandName === 'setup') {
+				if (commandName === 'setup-guide') {
+					const allowedSections = [
+						'quick-setup-instructions',
+						'streaming-over-the-internet',
+						'moonlight-client-setup-instructions',
+						'additional-requirements-for-hdr-streaming',
+						'keyboardmousegamepad-input-options',
+						'adding-custom-programs-that-are-not-automatically-found',
+						'using-moonlight-to-stream-your-entire-desktop',
+					];
+
+					// Link directly to a section
+					if (interaction.data.options[0]) {
+						const section = interaction.data.options[0].value;
+
+						// Only allow sections in list
+						if (!allowedSections.includes(section)) {
+							return messageResponse({ content: "The requested section of the setup guide isn't accepted" });
+						}
+
+						return messageResponse({ content: 'https://github.com/moonlight-stream/moonlight-docs/wiki/Setup-Guide#' + section });
+					}
+
 					return messageResponse({ content: 'https://github.com/moonlight-stream/moonlight-docs/wiki/Setup-Guide' });
 				}
 				// Faq
