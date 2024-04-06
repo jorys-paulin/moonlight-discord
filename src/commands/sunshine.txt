@@ -18,4 +18,3 @@ Support: <#667129596088418344>
 **Hints:**
 - GameStream should be toggled **off** in GeForce Experience (having both running is possible but needs advanced configuration)
 - Your Host, Client and Router might need a reboot for remote streaming to work
-- If you are having issues with the default settings, try this: for NVENC (`P1` + `ull` + `cbr` + `auto`) **or** (`P3` + `hq` + `cbr` + `auto`)
