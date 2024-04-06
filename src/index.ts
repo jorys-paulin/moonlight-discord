@@ -68,6 +68,7 @@ export default {
 				if (commandName === 'wiki') {
 					return messageResponse({ content: 'https://github.com/moonlight-stream/moonlight-docs/wiki' });
 				}
+
 				// Setup guide
 				if (commandName === 'setup-guide') {
 					const allowedSections = [
@@ -94,46 +95,54 @@ export default {
 
 					return messageResponse({ content: 'https://github.com/moonlight-stream/moonlight-docs/wiki/Setup-Guide' });
 				}
+
 				// Faq
 				if (commandName === 'faq') {
 					return messageResponse({ content: 'https://github.com/moonlight-stream/moonlight-docs/wiki/Frequently-Asked-Questions' });
 				}
+
 				// Gamepad tester
 				if (commandName === 'gamepadtester') {
 					return messageResponse({
 						content: 'Please open this on your host **while** being connected with Moonlight:\nhttps://gamepad-tester.com/',
 					});
 				}
+
 				// Shortcuts
 				if (commandName === 'shortcuts') {
 					return messageResponse({
 						content: 'https://github.com/moonlight-stream/moonlight-docs/wiki/Setup-Guide#keyboardmousegamepad-input-options',
 					});
 				}
+
 				// Ports
 				if (commandName === 'ports') {
 					return messageResponse({
 						content: ports,
 					});
 				}
+
 				// Sunshine
 				if (commandName === 'sunshine') {
 					return messageResponse({
 						content: sunshine,
 					});
 				}
+
 				// GFE server info
 				if (commandName === 'gfeserverinfo') {
 					return messageResponse({
 						content: gfeserverinfo,
 					});
 				}
+
 				// Scripts
 				if (commandName === 'scripts') {
 					return messageResponse({
 						content: scripts,
 					});
 				}
+
 				// ZeroTier
 				if (commandName === 'zerotier') {
 					return messageResponse({
@@ -149,10 +158,12 @@ export default {
 
 					return messageResponse({ content: `<@${target_message.author.id}> Please don't post your message in multiple channels` });
 				}
+
 				// Cheese
 				if (commandName === 'Cheese') {
 					return messageResponse({ content: ':cheese:' });
 				}
+
 				// Bob l'éponge
 				if (commandName === "Bob l'éponge") {
 					return messageResponse({ content: 'https://fr-academic.com/pictures/frwiki/66/Bob_l%27%C3%A9ponge.jpg' });
