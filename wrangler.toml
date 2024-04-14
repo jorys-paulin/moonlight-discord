@@ -8,3 +8,7 @@ DISCORD_APPLICATION_ID = "469805086290477057"
 # [secrets]
 # DISCORD_PUBLIC_KEY = "<discord-public-key>"
 # DISCORD_TOKEN = "<discord-token>"
+
+[[kv_namespaces]]
+binding = "DISCORD_CUSTOM_COMMANDS"
+id = "0511874a752d4e7fb3e4e27a46955cb8"
