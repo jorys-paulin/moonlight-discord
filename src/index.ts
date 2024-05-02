@@ -41,7 +41,6 @@ interface ApplicationCommand {
 	description: string;
 }
 
-
 // Returns a Discord message
 function messageResponse(message: { content: string }) {
 	return Response.json({ type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE, data: message });
