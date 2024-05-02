@@ -229,7 +229,7 @@ export default {
 									},
 									{
 										type: 1,
-										components: [{ type: 4, custom_id: 'content', style: 2, label: 'Content', min_length: 1, max_length: 1000 }],
+										components: [{ type: 4, custom_id: 'content', style: 2, label: 'Content', min_length: 1, max_length: 2000 }],
 									},
 								],
 							},
@@ -298,7 +298,7 @@ export default {
 												style: 2,
 												label: 'Content',
 												min_length: 1,
-												max_length: 1000,
+												max_length: 2000,
 												value: value,
 											},
 										],
