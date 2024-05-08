@@ -4,18 +4,6 @@
 
 import { InteractionResponseType, InteractionType, verifyKey } from 'discord-interactions';
 
-// Commands
-// @ts-expect-error
-import ports from './commands/ports.txt';
-// @ts-expect-error
-import sunshine from './commands/sunshine.txt';
-// @ts-expect-error
-import gfeserverinfo from './commands/gfeserverinfo.txt';
-// @ts-expect-error
-import scripts from './commands/scripts.txt';
-// @ts-expect-error
-import zerotier from './commands/zerotier.txt';
-
 export interface Env {
 	// Discord application ID
 	DISCORD_APPLICATION_ID: string;
@@ -47,19 +35,7 @@ function messageResponse(message: { content: string }) {
 }
 
 // Reserved commands
-const reservedCommands = [
-	'wiki',
-	'setup-guide',
-	'faq',
-	'gamepadtester',
-	'shortcuts',
-	'ports',
-	'sunshine',
-	'gfeserverinfo',
-	'scripts',
-	'zerotier',
-	'commands',
-];
+const reservedCommands = ['wiki', 'setup-guide', 'faq', 'commands'];
 
 export default {
 	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
@@ -128,55 +104,6 @@ export default {
 				// Faq
 				if (commandName === 'faq') {
 					return messageResponse({ content: 'https://github.com/moonlight-stream/moonlight-docs/wiki/Frequently-Asked-Questions' });
-				}
-
-				// Gamepad tester
-				if (commandName === 'gamepadtester') {
-					return messageResponse({
-						content: 'Please open this on your host **while** being connected with Moonlight:\nhttps://gamepad-tester.com/',
-					});
-				}
-
-				// Shortcuts
-				if (commandName === 'shortcuts') {
-					return messageResponse({
-						content: 'https://github.com/moonlight-stream/moonlight-docs/wiki/Setup-Guide#keyboardmousegamepad-input-options',
-					});
-				}
-
-				// Ports
-				if (commandName === 'ports') {
-					return messageResponse({
-						content: ports,
-					});
-				}
-
-				// Sunshine
-				if (commandName === 'sunshine') {
-					return messageResponse({
-						content: sunshine,
-					});
-				}
-
-				// GFE server info
-				if (commandName === 'gfeserverinfo') {
-					return messageResponse({
-						content: gfeserverinfo,
-					});
-				}
-
-				// Scripts
-				if (commandName === 'scripts') {
-					return messageResponse({
-						content: scripts,
-					});
-				}
-
-				// ZeroTier
-				if (commandName === 'zerotier') {
-					return messageResponse({
-						content: zerotier,
-					});
 				}
 
 				// Duplicate message

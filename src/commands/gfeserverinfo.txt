@@ -1,7 +1,0 @@
-Please open this on your host:
-`http://localhost:47989/serverinfo`
-
-Does it show xml code? If yes, then:
-
-Please open this on a client device in a webbrowser:
-http:// `local IP (or public if remote streaming) of the host` :47989/serverinfo
