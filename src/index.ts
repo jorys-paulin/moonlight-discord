@@ -282,14 +282,24 @@ export default {
 				// Custom commands autocomplete
 				if (interaction.data.name === 'commands') {
 					const commands = await env.DISCORD_CUSTOM_COMMANDS.list<KVCommandsMetadata>({ limit: 25, prefix: interaction.guild_id + ':' });
+
+					let choices = commands.keys.map((command) => {
+						const id = command.name.split(':')[1];
+						return {
+							name: command.metadata?.name || id,
+							value: id,
+						};
+					});
+
+					// Filter by user input
+					const commandName = interaction.data.options[0].options[0].value;
+					if (commandName) {
+						choices = choices.filter((command) => command.name.includes(commandName));
+					}
+
 					return Response.json({
 						type: InteractionResponseType.APPLICATION_COMMAND_AUTOCOMPLETE_RESULT,
-						data: {
-							choices: commands.keys.map((command) => ({
-								name: command.metadata?.name || command.name.split(':')[1],
-								value: command.name.split(':')[1],
-							})),
-						},
+						data: { choices },
 					});
 				}
 
