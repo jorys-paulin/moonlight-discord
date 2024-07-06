@@ -281,7 +281,7 @@ export default {
 			if (interaction.type === InteractionType.APPLICATION_COMMAND_AUTOCOMPLETE) {
 				// Custom commands autocomplete
 				if (interaction.data.name === 'commands') {
-					const commands = await env.DISCORD_CUSTOM_COMMANDS.list<KVCommandsMetadata>({ limit: 25, prefix: interaction.guild_id + ':' });
+					const commands = await env.DISCORD_CUSTOM_COMMANDS.list<KVCommandsMetadata>({ prefix: interaction.guild_id + ':' });
 
 					let choices = commands.keys.map((command) => {
 						const id = command.name.split(':')[1];
@@ -299,7 +299,7 @@ export default {
 
 					return Response.json({
 						type: InteractionResponseType.APPLICATION_COMMAND_AUTOCOMPLETE_RESULT,
-						data: { choices },
+						data: { choices: choices.slice(0, 25) },
 					});
 				}
 
