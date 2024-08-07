@@ -115,6 +115,17 @@ export default {
 					return messageResponse({ content: `<@${target_message.author.id}> Please don't post your message in multiple channels` });
 				}
 
+				// Wrong channel
+				if (commandName === 'Wrong channel') {
+					// Grab the target message's author
+					const target_id = interaction.data.target_id;
+					const target_message = interaction.data.resolved.messages[target_id];
+
+					return messageResponse({
+						content: `<@${target_message.author.id}> Please use the correct help channel, according to <#668086277639503874>`,
+					});
+				}
+
 				// Cheese
 				if (commandName === 'Cheese') {
 					return messageResponse({ content: ':cheese:' });
