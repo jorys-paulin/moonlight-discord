@@ -4,20 +4,6 @@
 
 import { InteractionResponseType, InteractionType, verifyKey } from 'discord-interactions';
 
-export interface Env {
-	// Discord application ID
-	DISCORD_APPLICATION_ID: string;
-
-	// Discord public key
-	DISCORD_PUBLIC_KEY: string;
-
-	// Discord token
-	DISCORD_TOKEN: string;
-
-	// Discord commands KV
-	DISCORD_CUSTOM_COMMANDS: KVNamespace;
-}
-
 interface KVCommandsMetadata {
 	name: string;
 	description: string;
@@ -426,4 +412,4 @@ export default {
 		// Default route
 		return new Response('Not Found', { status: 404 });
 	},
-};
+} satisfies ExportedHandler<Env>;
