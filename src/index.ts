@@ -250,7 +250,7 @@ export default {
 							// TODO: better error-handling (like for "command doesn't exist")
 							if (!response.ok) {
 								console.error('delete_command', await response.json());
-								return messageResponse({ content: 'An error occured while deleting the command on Discord' });
+								return messageResponse({ content: 'An error occurred while deleting the command on Discord' });
 							}
 
 							// Delete from KV
@@ -260,7 +260,7 @@ export default {
 							return messageResponse({ content: 'The command has been sucessfully deleted!' });
 						} catch (error) {
 							console.error('delete_command', error);
-							return messageResponse({ content: 'An error occured while deleting the command' });
+							return messageResponse({ content: 'An error occurred while deleting the command' });
 						}
 					}
 				}
@@ -340,7 +340,7 @@ export default {
 
 						if (!response.ok) {
 							console.error('create_command', await response.json());
-							return messageResponse({ content: 'An error occured while creating the command on Discord' });
+							return messageResponse({ content: 'An error occurred while creating the command on Discord' });
 						}
 
 						const command = (await response.json()) as ApplicationCommand;
@@ -356,7 +356,7 @@ export default {
 						return messageResponse({ content: `Your command has been successfully created: </${command.name}:${command.id}>` });
 					} catch (error) {
 						console.error('create_command', error);
-						return messageResponse({ content: 'An error occured while creating the command' });
+						return messageResponse({ content: 'An error occurred while creating the command' });
 					}
 				}
 
@@ -385,7 +385,7 @@ export default {
 
 						if (!response.ok) {
 							console.error('update_command', await response.json());
-							return messageResponse({ content: 'An error occured while updating the command on Discord' });
+							return messageResponse({ content: 'An error occurred while updating the command on Discord' });
 						}
 
 						const command = (await response.json()) as ApplicationCommand;
@@ -401,7 +401,7 @@ export default {
 						return messageResponse({ content: 'Your command has been sucessfully updated!' });
 					} catch (error) {
 						console.error('update_command', error);
-						return messageResponse({ content: 'An error occured while updating the command' });
+						return messageResponse({ content: 'An error occurred while updating the command' });
 					}
 				}
 			}
