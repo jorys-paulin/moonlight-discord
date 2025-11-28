@@ -9,10 +9,10 @@
 		"cf-typegen": "wrangler types"
 	},
 	"devDependencies": {
-		"typescript": "^5.5.2",
-		"wrangler": "^4.38.0"
+		"typescript": "^5.9.3",
+		"wrangler": "^4.51.0"
 	},
 	"dependencies": {
-		"discord-interactions": "^3.4.0"
+		"discord-interactions": "^4.4.0"
 	}
 }
