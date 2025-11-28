@@ -143,16 +143,40 @@ export default {
 								title: 'Create a new command',
 								components: [
 									{
-										type: 1,
-										components: [{ type: 4, custom_id: 'name', style: 1, label: 'Name', min_length: 1, max_length: 32 }],
+										type: 18,
+										label: 'Name',
+										description: 'The name for the new command',
+										component: {
+											type: 4,
+											custom_id: 'name',
+											style: 1,
+											min_length: 1,
+											max_length: 32,
+										},
 									},
 									{
-										type: 1,
-										components: [{ type: 4, custom_id: 'description', style: 2, label: 'Description', min_length: 1, max_length: 100 }],
+										type: 18,
+										label: 'Description',
+										description: 'The description for the new command',
+										component: {
+											type: 4,
+											custom_id: 'description',
+											style: 2,
+											min_length: 1,
+											max_length: 100,
+										},
 									},
 									{
-										type: 1,
-										components: [{ type: 4, custom_id: 'content', style: 2, label: 'Content', min_length: 1, max_length: 2000 }],
+										type: 18,
+										label: 'Content',
+										description: 'The content for the new command',
+										component: {
+											type: 4,
+											custom_id: 'content',
+											style: 2,
+											min_length: 1,
+											max_length: 2000,
+										},
 									},
 								],
 							},
@@ -185,46 +209,43 @@ export default {
 								title: 'Edit a command',
 								components: [
 									{
-										type: 1,
-										components: [
-											{
-												type: 4,
-												custom_id: 'name',
-												style: 1,
-												label: 'Name',
-												min_length: 1,
-												max_length: 32,
-												value: metadata?.name,
-											},
-										],
+										type: 18,
+										label: 'Name',
+										description: 'The name for the command',
+										component: {
+											type: 4,
+											custom_id: 'name',
+											style: 1,
+											min_length: 1,
+											max_length: 32,
+											value: metadata?.name,
+										},
 									},
 									{
-										type: 1,
-										components: [
-											{
-												type: 4,
-												custom_id: 'description',
-												style: 2,
-												label: 'Description',
-												min_length: 1,
-												max_length: 100,
-												value: metadata?.description,
-											},
-										],
+										type: 18,
+										label: 'Description',
+										description: 'The description for the command',
+										component: {
+											type: 4,
+											custom_id: 'description',
+											style: 2,
+											min_length: 1,
+											max_length: 100,
+											value: metadata?.description,
+										},
 									},
 									{
-										type: 1,
-										components: [
-											{
-												type: 4,
-												custom_id: 'content',
-												style: 2,
-												label: 'Content',
-												min_length: 1,
-												max_length: 2000,
-												value: value,
-											},
-										],
+										type: 18,
+										label: 'Content',
+										description: 'The content for the command',
+										component: {
+											type: 4,
+											custom_id: 'content',
+											style: 2,
+											min_length: 1,
+											max_length: 2000,
+											value: value,
+										},
 									},
 								],
 							},
@@ -318,9 +339,9 @@ export default {
 			if (interaction.type === InteractionType.MODAL_SUBMIT) {
 				// Create custom command
 				if (interaction.data.custom_id === 'create_command') {
-					const name = interaction.data.components[0].components[0].value.toLowerCase().replace(' ', '').trim();
-					const description = interaction.data.components[1].components[0].value;
-					const content = interaction.data.components[2].components[0].value;
+					const name = interaction.data.components[0].component.value.toLowerCase().replace(' ', '').trim();
+					const description = interaction.data.components[1].component.value;
+					const content = interaction.data.components[2].component.value;
 
 					// Check for registered commands
 					if (reservedCommands.includes(name)) {
@@ -363,9 +384,9 @@ export default {
 				// Update custom commmand
 				if (interaction.data.custom_id.startsWith('update_command:')) {
 					const id = interaction.data.custom_id.replace('update_command:', '');
-					const name = interaction.data.components[0].components[0].value.toLowerCase().replace(' ', '-').trim();
-					const description = interaction.data.components[1].components[0].value;
-					const content = interaction.data.components[2].components[0].value;
+					const name = interaction.data.components[0].component.value.toLowerCase().replace(' ', '-').trim();
+					const description = interaction.data.components[1].component.value;
+					const content = interaction.data.components[2].component.value;
 
 					// Check for registered commands
 					if (reservedCommands.includes(name)) {
