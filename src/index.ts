@@ -38,8 +38,14 @@ export default {
 			const timestamp = request.headers.get('X-Signature-Timestamp');
 			const body = await request.text();
 
+			// Check for signature headers
+			if (!signature || !timestamp) {
+				return new Response('Missing Request Signature', { status: 400 });
+			}
+
 			// Check signature
-			if (!signature || !timestamp || !verifyKey(body, signature, timestamp, env.DISCORD_PUBLIC_KEY)) {
+			const isValidRequest = await verifyKey(body, signature, timestamp, env.DISCORD_PUBLIC_KEY);
+			if (!isValidRequest) {
 				return new Response('Bad Request Signature', { status: 401 });
 			}
 
