@@ -4,16 +4,16 @@
 
 import { InteractionResponseType, InteractionType, verifyKey } from 'discord-interactions';
 
-interface KVCommandsMetadata {
+type KVCommandsMetadata = {
 	name: string;
 	description: string;
-}
+};
 
-interface ApplicationCommand {
+type ApplicationCommand = {
 	id: string;
 	name: string;
 	description: string;
-}
+};
 
 // Returns a Discord message
 function messageResponse(message: { content: string }) {
