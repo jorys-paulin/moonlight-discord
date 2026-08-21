@@ -20,9 +20,6 @@ function messageResponse(message: { content: string }) {
 	return Response.json({ type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE, data: message });
 }
 
-// Reserved commands
-const reservedCommands = ['wiki', 'setup-guide', 'faq', 'commands'];
-
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
 		const url = new URL(request.url);
@@ -343,6 +340,9 @@ export default {
 
 			// Modal submit
 			if (interaction.type === InteractionType.MODAL_SUBMIT) {
+				// Reserved command names
+				const RESERVED_COMMANDS = ['wiki', 'setup-guide', 'faq', 'commands'];
+
 				// Create custom command
 				if (interaction.data.custom_id === 'create_command') {
 					const name = interaction.data.components[0].component.value.toLowerCase().replace(' ', '').trim();
@@ -350,7 +350,7 @@ export default {
 					const content = interaction.data.components[2].component.value;
 
 					// Check for registered commands
-					if (reservedCommands.includes(name)) {
+					if (RESERVED_COMMANDS.includes(name)) {
 						return messageResponse({ content: "The given command name can't be used because it is reserved" });
 					}
 
@@ -395,7 +395,7 @@ export default {
 					const content = interaction.data.components[2].component.value;
 
 					// Check for registered commands
-					if (reservedCommands.includes(name)) {
+					if (RESERVED_COMMANDS.includes(name)) {
 						return messageResponse({ content: "The given command name can't be used because it is reserved" });
 					}
 
