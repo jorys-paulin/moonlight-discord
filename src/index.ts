@@ -24,7 +24,7 @@ function messageResponse(message: { content: string }) {
 const reservedCommands = ['wiki', 'setup-guide', 'faq', 'commands'];
 
 export default {
-	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+	async fetch(request, env, ctx): Promise<Response> {
 		const url = new URL(request.url);
 
 		// Index page
@@ -200,7 +200,7 @@ export default {
 
 						// Try fetching the command from KV
 						const { value, metadata } = await env.DISCORD_CUSTOM_COMMANDS.getWithMetadata<KVCommandsMetadata>(
-							interaction.guild_id + ':' + id
+							interaction.guild_id + ':' + id,
 						);
 
 						// Command not found
@@ -271,7 +271,7 @@ export default {
 						try {
 							const response = await fetch(
 								`https://discord.com/api/v10/applications/${env.DISCORD_APPLICATION_ID}/guilds/${interaction.guild_id}/commands/${id}`,
-								{ method: 'DELETE', headers: { Authorization: 'Bot ' + env.DISCORD_TOKEN, 'Content-Type': 'application/json' } }
+								{ method: 'DELETE', headers: { Authorization: 'Bot ' + env.DISCORD_TOKEN, 'Content-Type': 'application/json' } },
 							);
 
 							// TODO: better error-handling (like for "command doesn't exist")
@@ -362,7 +362,7 @@ export default {
 								method: 'POST',
 								body: JSON.stringify({ name, description }),
 								headers: { Authorization: 'Bot ' + env.DISCORD_TOKEN, 'Content-Type': 'application/json' },
-							}
+							},
 						);
 
 						if (!response.ok) {
@@ -407,7 +407,7 @@ export default {
 								method: 'PATCH',
 								body: JSON.stringify({ name, description }),
 								headers: { Authorization: 'Bot ' + env.DISCORD_TOKEN, 'Content-Type': 'application/json' },
-							}
+							},
 						);
 
 						if (!response.ok) {

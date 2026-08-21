@@ -8,7 +8,8 @@
 			"cwd": "/",
 			"resolveSourceMapLocations": null,
 			"attachExistingChildren": false,
-			"autoAttachChildProcesses": false
+			"autoAttachChildProcesses": false,
+			"sourceMaps": true // works with or without this line
 		}
 	]
 }
