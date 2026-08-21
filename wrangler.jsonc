@@ -32,5 +32,12 @@
 	 * Note: Use secrets to store sensitive data.
 	 * https://developers.cloudflare.com/workers/configuration/secrets/
 	 */
-	"vars": { "DISCORD_APPLICATION_ID": "469805086290477057" }
+	"vars": { "DISCORD_APPLICATION_ID": "469805086290477057" },
+	/**
+	 * Secrets
+	 * https://developers.cloudflare.com/workers/wrangler/configuration/#secrets-configuration-property
+	 */
+	"secrets": {
+		"required": ["DISCORD_PUBLIC_KEY", "DISCORD_TOKEN"]
+	}
 }
